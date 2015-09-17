@@ -3,6 +3,7 @@
  # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
  gem 'rails', '4.2.0'
  gem 'tzinfo-data'
+ gem 'coffee-script-source', '1.9.0'
  
  # #1
  group :production do
