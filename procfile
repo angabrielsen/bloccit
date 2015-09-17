@@ -1,0 +1,1 @@
+web: bundle exec bloccit -C views/welcome_controller.rb
