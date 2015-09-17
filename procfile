@@ -1,1 +1,1 @@
-bloccit: bundle exec puma -C config/puma.rb
+web: bundle exec bloccit -C views/welcome_controller.rb
