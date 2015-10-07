@@ -1,4 +1,5 @@
 require 'rails_helper'
+include RandomData
 
 RSpec.describe PostsController, type: :controller do
   let (:my_post) { Post.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
@@ -8,7 +9,6 @@ RSpec.describe PostsController, type: :controller do
       get :index
       expect(response).to have_http_status(:success)
     end
-  end
 
   it "assigns [my_post] to @posts" do
        get :index
