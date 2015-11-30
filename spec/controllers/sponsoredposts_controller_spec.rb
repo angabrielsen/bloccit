@@ -13,7 +13,7 @@ RSpec.describe SponsoredpostsController, type: :controller do
 
 		it "renders the #show view" do
 			get :show, topic_id: my_topic.id, id: my_sponsoredpost.id
-			expect(response).to renders_template :show
+			expect(response).to render_template :show
 		end
 
 		it "assigns my_sponsoredpost to @sponsoredpost" do
