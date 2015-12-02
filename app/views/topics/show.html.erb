@@ -20,11 +20,11 @@
 		           </small>
 				</div>
 			</div>
-
-			<div class="col-md-4">
-				<%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
-			</div>
 		<% end %>
+
+		<div class="col-md-4">
+			<%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
+		</div>
 	</div>
 
 	<div class="col-md-8">
@@ -41,10 +41,10 @@
 		           </small>
 				</div>
 			</div>
-
-			<div class="col-md-4">
-				<%= link_to "New Sponsored Post", new_topic_sponsoredpost_path(@topic), class: 'btn btn-success' %>
-			</div>
 		<% end %>
+
+		<div class="col-md-4">
+			<%= link_to "New Sponsored Post", new_topic_sponsoredpost_path(@topic), class: 'btn btn-success' %>
+		</div>
 	</div>
 </div>

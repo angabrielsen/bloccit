@@ -1,4 +1,21 @@
 class SponsoredpostsController < ApplicationController
+	def create
+		@sponsoredpost = Sponsoredpost.new
+		@sponsoredpost.title = params[:sponsoredpost][:title]
+		@sponsoredpost.body = params[:sponsoredpost][:body]
+		@sponsoredpost.price = params[:sponsoredpost][:price]
+		@topic = Topic.find(params[:topic_id])
+    	@sponsoredpost.topic = @topic
+
+		if @sponsoredpost.save
+	    	flash[:notice] = "Sponsored post was saved."
+	       	redirect_to [@topic, @sponsoredpost]
+	    else
+	    	flash[:error] = "There was an error saving the sponsored post. Please try again."
+	    	render :new
+	    end
+	end
+
 	def index
 		@sponsoredposts = Sponsoredpost.all
 	end
@@ -8,21 +25,8 @@ class SponsoredpostsController < ApplicationController
 	end
 
 	def new
+		@topic = Topic.find(params[:topic_id])
 		@sponsoredpost = Sponsoredpost.new
-	end
-
-	def create
-		@sponsoredpost = Sponsoredpost.new
-		@sponsoredpost.title = params[:sponsoredpost][:title]
-		@sponsoredpost.body = params[:sponsoredpost][:body]
-		@sponsoredpost.price = params[:sponsoredpost][:price]
-
-		if @sponsoredpost.save
-			redirect_to @sponsoredpost, notice: "sponsored post was saved successfully."
-		else
-			flash[:error] = "Error creating sponsored post. Please try again."
-			render :new
-		end
 	end
 
 	def edit
@@ -31,16 +35,14 @@ class SponsoredpostsController < ApplicationController
 
 	def update
 		@sponsoredpost = Sponsoredpost.find(params[:id])
-
 		@sponsoredpost.title = params[:sponsoredpost][:title]
 		@sponsoredpost.body = params[:sponsoredpost][:body]
-		@sponsoredpost.price = params[:sponsoredpost][:price]
 
 		if @sponsoredpost.save
 			flash[:notice] = "Sponsored post was updated."
-			redirect_to @sponsoredpost
+			redirect_to [@sponsoredpost.topic,@sponsoredpost]
 		else
-			flash[:error] = "Error saving topic. Please try again."
+			flash[:error] = "There was an error saving the sponsored post. Please try again."
 			render :edit
 		end
 	end
@@ -50,9 +52,9 @@ class SponsoredpostsController < ApplicationController
 
 		if @sponsoredpost.destroy
 			flash[:notice] = "\"#{@sponsoredpost.title}\" was deleted successfully."
-			redirect_to action: :index
+			redirect_to @sponsoredpost.topic
 		else
-			flash[:error] = "There was an error deleting the sponsoredpost."
+			flash[:error] = "There was an error deleting the post."
 			render :show
 		end
 	end
