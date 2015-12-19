@@ -1,5 +1,14 @@
 include RandomData
 
+5.times do
+	User.create!(
+		name: RandomData.random_name,
+		email: RandomData.random_email,
+		password: RandomData.random_sentence
+	)
+end
+users=User.all
+
 15.times do
 	Topic.create!(
 		name: RandomData.random_sentence,
@@ -20,6 +29,8 @@ sponsoredposts = Sponsoredpost.all
 
 50.times do
 	Post.create!(
+		user: users.sample,
+		topic: topics.sample,
 		title:  RandomData.random_sentence,
 		body:   RandomData.random_paragraph
    )
@@ -34,16 +45,14 @@ posts = Post.all
    )
 end
 
-puts "#{Post.count}"
-Post.find_or_create_by(title: "Look at this wacky, unique title!", body: "Look at this wacky, unique body!")
-puts "#{Post.count}"
+user = User.first
+user.update_attributes!(
+	email: 'anlevier@gmail.com',
+	password: 'helloworld'
+)
 
-puts "#{Comment.count}"
-Comment.find_or_create_by(body: "Look at this wacky, unique body!")
-puts "#{Comment.count}"
-
- 
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
 puts "#{Sponsoredpost.count} sponsored posts created"
 puts "#{Post.count} posts created"

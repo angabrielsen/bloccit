@@ -51,7 +51,7 @@ RSpec.describe SponsoredpostsController, type: :controller do
 			it "redirects to the new post" do
 			post :create, topic_id: my_topic.id, sponsoredpost: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
 
-			expect(response).to redirect_to [my_topic, Sponsoredost.last]
+			expect(response).to redirect_to [my_topic, SponsoredPost.last]
 
 		end
 	end
