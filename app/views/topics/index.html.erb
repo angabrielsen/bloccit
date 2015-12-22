@@ -2,9 +2,7 @@
 
 <div class="row">
 	<div class="col-md-8">
-		<% @topics.each do |topic| %>
-			<%= render topic %>
-		<% end %>
+		<%= render @topics %>
 	</div>
 
 	<% if user_is_authorized_for_topics? %>
