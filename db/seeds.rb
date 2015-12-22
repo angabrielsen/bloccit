@@ -45,9 +45,16 @@ posts = Post.all
    )
 end
 
-user = User.first
-user.update_attributes!(
-	email: 'anlevier@gmail.com',
+admin = User.create!(
+	name: 'Admin User',
+	email: 'admin@example.com',
+	password: 'hellowrold',
+	role: 'admin'
+)
+
+member = User.create!(
+	name: 'Member User',
+	email: 'member@example.com',
 	password: 'helloworld'
 )
 
