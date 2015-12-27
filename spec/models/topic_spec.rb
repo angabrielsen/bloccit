@@ -6,6 +6,8 @@ RSpec.describe Topic, type: :model do
   let(:sponsoredpost) {topic.sponsoredposts.create!(title:RandomData.random_sentence, body: RandomData.random_paragraph, price: 99)}
 
   it { should have_many(:posts) }
+  it { should have_many(:labelings) }
+  it { should have_many(:labels).through(:labelings) }
   it { should have_many(:sponsoredposts) }
     
   describe "attributes" do

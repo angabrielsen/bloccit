@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+	resources :labels, only: [:show]
 	resources :sponsoredposts
 	resources :topics do
 		resources :posts, except: [:index]
@@ -9,9 +10,9 @@ Rails.application.routes.draw do
 		resources :comments, only: [:create, :destroy]
 	end
 
-  resources :users, only: [:new, :create]
-  resources :sessions, only: [:new, :create, :destroy]
+	resources :users, only: [:new, :create]
+	resources :sessions, only: [:new, :create, :destroy]
 
-  get 'about' => 'welcome#about'
-  root to: 'welcome#index'
+	get 'about' => 'welcome#about'
+	root to: 'welcome#index'
 end
