@@ -3,4 +3,5 @@ class Topic < ActiveRecord::Base
 	has_many :labelings, as: :labelable
 	has_many :labels, through: :labelings
 	has_many :sponsoredposts
+	belongs_to :rating
 end
