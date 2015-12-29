@@ -32,19 +32,20 @@ class PostsController < ApplicationController
 	end
 
 	def update
-     @post = Post.find(params[:id])
-     @post.assign_attributes(post_params)
- 
-     if @post.save
-        @post.labels = Label.update_labels(params[:post][:labels])
-        @post.rating = Rating.update_rating(params[:post][:rating])
-       flash[:notice] = "Post was updated."
-       redirect_to [@post.topic,@post]
-     else
-       flash[:error] = "There was an error saving the post. Please try again."
-       render :edit
-     end
-   end
+    @post = Post.find(params[:id])
+    @post.assign_attributes(post_params)
+    
+    @post.labels = Label.update_labels(params[:post][:labels])
+    @post.rating = Rating.update_rating(params[:post][:rating])
+
+    if @post.save
+      flash[:notice] = "Post was updated."
+      redirect_to [@post.topic,@post]
+    else
+      flash[:error] = "There was an error saving the post. Please try again."
+      render :edit
+    end
+  end
 
    def destroy
      @post = Post.find(params[:id])
