@@ -19,12 +19,12 @@ RSpec.describe WelcomeController, :type => :controller do
 		end
 	end
 
-	describe "GET faq" do
-		it "renders the faq template" do
+	# describe "GET faq" do
+	# 	it "renders the faq template" do
 
-			get :faq
+	# 		get :faq
 
-			expect(response).to render_template("faq")
-		end
-	end
+	# 		expect(response).to render_template("faq")
+	# 	end
+	# end
 end
