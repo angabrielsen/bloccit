@@ -1,7 +1,7 @@
  source 'https://rubygems.org'
  
  # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
- gem 'rails', '4.2.0'
+ gem 'rails', '~> 4.2'
  gem 'tzinfo-data'
  gem 'coffee-script-source', '1.9.0'
  gem 'figaro', '1.0'

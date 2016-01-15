@@ -26,14 +26,38 @@
 
 <h2>Posts</h2>
 <% if user_has_posts? %>
-  <p><%= @user.name %> has not submitted any posts yet.</p>
-<% else %>
   <%= render @user.posts %>
+<% else %>
+  <p><%= @user.name %> has not submitted any posts yet.</p>
 <% end %>
 
 <h2>Comments</h2>
 <% if user_has_comments? %>
-  <p><%= @user.name %> has not submitted any comments yet.</p>
-<% else %>
   <%= render @user.comments %>
+<% else %>
+  <p><%= @user.name %> has not submitted any comments yet.</p>
+<% end %>
+
+<h2>Favorites</h2>
+<% if user_has_favorites? %>
+    <% @user.favorites.each do |favorite| %>
+       <div class="row"> 
+        <div class="col-md-1">
+          <% avatar_small = @user.avatar_url(30) %>
+          <% if avatar_small %>
+              <%= image_tag avatar_small %>
+          <% end %>
+        </div>
+
+        <div class="col-md-2">
+          <%= pluralize(favorite.post.points, 'point') %>
+        </div>
+
+        <div class="col-md-8">
+          <%= link_to favorite.post.title %>
+        </div>
+      </div>
+    <% end %>
+<% else %>
+    <p><%= @user.name %> has not favorited any posts yet.</p>
 <% end %>
