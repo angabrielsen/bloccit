@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 		end
 
 		respond_to do |format|
-			format.html
+			format.html { redirect_to topic_post_path(@post.topic, @post) }
 			format.js
 		end
 	end
