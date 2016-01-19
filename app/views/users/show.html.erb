@@ -54,7 +54,7 @@
         </div>
 
         <div class="col-md-8">
-          <%= link_to favorite.post.title %>
+          <%= link_to favorite.post.title, topic_post_path(favorite.post.topic, favorite.post) %> 
         </div>
       </div>
     <% end %>
