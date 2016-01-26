@@ -1,4 +1,5 @@
 require 'rails_helper'
+include RandomData
 
 RSpec.describe Api::V1::TopicsController, type: :controller do
 let(:my_user) { create(:user) }
@@ -123,5 +124,23 @@ let(:my_topic) { create(:topic) }
         expect{ Topic.find(my_topic.id) }.to raise_exception(ActiveRecord::RecordNotFound)
       end
     end
+
+    # describe "POST create_post" do
+    #   before { post :create_post, id: my_topic.id, post: {title: @new_post.title, body: @new_post.body} }
+
+    #   it "returns http success" do
+    #     expect(response).to have_http_status(:success)
+    #   end
+
+    #   it "returns json content type" do
+    #     exepect(response.content_type).to eq 'application/json'
+    #   end
+
+    #   it "creates a post with the correct attributes" do
+    #     hashed_json = JSON.parse(response.body)
+    #     expect(@new_post.title).to eq hashed_json["title"]
+    #     expect(@new_post.body).to eq hashed_json["body"]
+    #   end
+    # end
   end
 end

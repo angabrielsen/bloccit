@@ -11,6 +11,8 @@ class Api::V1::BaseController < ApplicationController
 
   def authorize_user
     unless @current_user && @current_user.admin?
+      # this isn't quite right... saying only an admin can use the API?
+      # well, okay, mayeb that makes sense in this imaginary world, lets roll with that and modify the test setup
       render json: {error: "Not Authorized", status: 403}, status: 403
     end
   end
