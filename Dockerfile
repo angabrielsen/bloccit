@@ -1,7 +1,6 @@
-FROM registry.octanner.io/base/oct-node:4.4.6
+FROM quay.octanner.io/base/oct-ruby/2.3.0-onbuild
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY . /usr/src/app
-RUN npm install
-EXPOSE 5000
-CMD [ "npm", "start" ]
+EXPOSE 3000
+CMD [ "rails", "s" ]
